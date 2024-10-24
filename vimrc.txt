@@ -1,0 +1,83 @@
+syntax on 
+"set number 
+set tabstop=4
+set shiftwidth=4
+set noswapfile
+set noshowmode
+set autoindent
+set smarttab
+set softtabstop=4
+set mouse=a
+set cindent 
+set cursorline 
+set background=dark
+set scrolloff=8
+
+
+
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {{ {
+inoremap {} {}
+
+autocmd InsertLeave * :normal! `^
+set virtualedit=onemore
+
+let insert_command = "inoremap <ESC> <C-O>:stopinsert<CR>"
+let append_command = "iunmap <ESC>"
+nnoremap i :exe insert_command<CR>i
+nnoremap a :exe append_command<CR>a
+
+
+"set termguicolors
+
+
+
+call plug#begin()
+"Plug 'https://github.com/endel/vim-github-colorscheme'
+"Plug 'artanikin/vim-synthwave84'
+"Plug 'ErichDonGubler/vim-sublime-monokai'
+"Plug 'https://github.com/LunarVim/LunarVim'
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/vim-airline/vim-airline'
+"Plug 'https://github.com/tpope/vim-surround'
+"Plug 'https://github.com/preservim/nerdtree'
+
+call plug#end()
+
+
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+":inoremap <C-BS> <C-W>
+
+"кастомизация bar`airline
+let g:airline_powerline_fonts = 1 "Включить поддержку Powerline шрифтов
+let g:airline#extensions#keymap#enabled = 0 "Не показывать текущий маппинг
+let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Кастомная графа положения курсора
+let g:Powerline_symbols='unicode' "Поддержка unicode
+let g:airline#extensions#xkblayout#enabled = 0 
+
+
+
+imap <C-BS> <C-W>
+
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+
+"sceme 
+"set background=dark
+"set termguicolors
+"colorscheme deep-space
+
+"colorscheme github
+
+"-----------------------------------------------------------------------
+
+
+"set term=xterm-256color
+"set term=screen-256color
+"if has('termguicolors')
+"    set termguicolors
+"endif
+"set background=dark
+"colorscheme synthwave84
